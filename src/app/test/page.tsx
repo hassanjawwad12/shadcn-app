@@ -18,9 +18,13 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 
+type Faq = {
+    question: string
+    answer: string
+}
 
 const page = () => {
-    const faq = [
+    const faq: Faq[] = [
         {
             question: "Is it accessible?",
             answer: "Yes. It adheres to the WAI-ARIA design pattern."
@@ -48,7 +52,7 @@ const page = () => {
             <p className='text-2xl text-white font-bold'>Now we will see the accordian</p>
             <main className='w-[500px] p-4'>
                 <Accordion type="single" collapsible>
-                    {faq.map((item, index) => (
+                    {faq.map((item: Faq, index: number) => (
                         <AccordionItem key={index} value={`item-${index + 1}`}>
                             <AccordionTrigger>{item.question}</AccordionTrigger>
                             <AccordionContent>{item.answer}</AccordionContent>
@@ -58,7 +62,7 @@ const page = () => {
             </main>
             <AlertDialog>
                 <AlertDialogTrigger asChild>
-                <Button variant='chai' size='lg'>Open</Button>
+                    <Button variant='chai' size='lg'>Open</Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                     <AlertDialogHeader>
